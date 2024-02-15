@@ -7,7 +7,7 @@ function Dashboard() {
       <div className="w-[20%]">
         <Sidebar />
       </div>
-      <div className="w-[80%]">
+      <div className="md:w-[80%] ">
         <DashboardRoutes />
       </div>
     </div>

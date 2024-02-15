@@ -115,7 +115,7 @@ function Dashboardcontent() {
   return (
     <div className="p-7">
       <div>
-        <div className="flex justify-between">
+        <div className="flex flex-col md:flex-row gap-10 justify-between">
           <div className="border px-2.5 py-px flex gap-3 w-1/2 bg-white items-center rounded-sm">
             <MagnifyingGlassIcon className="h-6 w-6 text-gray-400" />
             <input
@@ -138,7 +138,7 @@ function Dashboardcontent() {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-between my-8">
+        <div className="flex flex-col md:flex-row items-center justify-between my-8">
           <div>
             <Select
               id="gender"
@@ -186,46 +186,48 @@ function Dashboardcontent() {
               <ArrowLongRightIcon className="w-4 text-gray-500 font-medium" />
             </p>
           </div>
-          <table className="w-full text-left rounded p-3 overflow-hidden my-8">
-            <thead>
-              <tr className="bg-gray-100 border-b-[1.5px] text-[#8E95A9] ">
-                <th className="py-5 text-center">Products</th>
-                <th className="py-5 text-center">Gender</th>
-                <th className="py-5 text-center">Category</th>
-                <th className="py-5 text-center">Price</th>
-                <th className="py-5 text-center">Description</th>
-                <th className="py-5 text-center">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((product, index) => (
-                <tr key={index} className="border-b-[1.5px] text-[#555F7E]">
-                  <td className="text-center flex items-center pl-5 py-5">
-                    <img
-                      src={product.picture}
-                      alt={product.name}
-                      className="w-10 h-10 mr-2 rounded-full"
-                    />
-                    {product.name}
-                  </td>
-                  <td className="text-center py-5">{product.gender}</td>
-                  <td className="text-center py-5">{product.category}</td>
-                  <td className="text-center py-5">
-                    ${product.price.toFixed(2)}
-                  </td>
-                  <td className="text-left py-5">{product.description}</td>
-                  <td className="text-right py-5 flex gap-2 items-center justify-center">
-                    <PencilSquareIcon className="h-5 w-5 hover:cursor-pointer" />
-                    <TrashIcon
-                      className="h-5 w-5 hover:cursor-pointer"
-                      onClick={() => handleProductDelete(product._id)}
-                    />
-                    <EllipsisHorizontalIcon className="h-5 w-5 hover:cursor-pointer" />
-                  </td>
+          <div className="overflow-auto">
+            <table className="w-full text-left rounded p-3 overflow-hidden my-8">
+              <thead>
+                <tr className="bg-gray-100 border-b-[1.5px] text-[#8E95A9] ">
+                  <th className="py-5 text-center">Products</th>
+                  <th className="py-5 text-center">Gender</th>
+                  <th className="py-5 text-center">Category</th>
+                  <th className="py-5 text-center">Price</th>
+                  <th className="py-5 text-center">Description</th>
+                  <th className="py-5 text-center">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {products.map((product, index) => (
+                  <tr key={index} className="border-b-[1.5px] text-[#555F7E]">
+                    <td className="text-center flex items-center pl-5 py-5">
+                      <img
+                        src={product.picture}
+                        alt={product.name}
+                        className="w-10 h-10 mr-2 rounded-full"
+                      />
+                      {product.name}
+                    </td>
+                    <td className="text-center py-5">{product.gender}</td>
+                    <td className="text-center py-5">{product.category}</td>
+                    <td className="text-center py-5">
+                      ${product.price.toFixed(2)}
+                    </td>
+                    <td className="text-left py-5">{product.description}</td>
+                    <td className="text-right py-5 flex gap-2 items-center justify-center">
+                      <PencilSquareIcon className="h-5 w-5 hover:cursor-pointer" />
+                      <TrashIcon
+                        className="h-5 w-5 hover:cursor-pointer"
+                        onClick={() => handleProductDelete(product._id)}
+                      />
+                      <EllipsisHorizontalIcon className="h-5 w-5 hover:cursor-pointer" />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       {isModalOpen && (
